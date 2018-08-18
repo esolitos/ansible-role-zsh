@@ -1,5 +1,7 @@
 ---
 
-zsh_default_prompt_name: mlpure
-zsh_default_prompt_download_url: https://raw.githubusercontent.com/loliee/mlpure/master/pure.zsh
-zsh_default_prompt_additional_url: https://raw.githubusercontent.com/loliee/mlpure/master/async.zsh
+zsh_default_prompt_name: pure
+zsh_default_prompt_download_url: https://raw.githubusercontent.com/sindresorhus/pure/master/pure.zsh
+zsh_default_prompt_download_md5: 1732e778113dfbef50a0d0625e69a191
+zsh_default_prompt_additional_url: https://raw.githubusercontent.com/sindresorhus/pure/master/async.zsh
+zsh_default_prompt_additional_md5: d38ea1a8f9cb11495e90788898f20c6a
