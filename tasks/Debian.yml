@@ -1,4 +1,4 @@
 ---
 
 - name: Install package.
-  apt: name=zsh state=present
+  apt: name=zsh state=present update_cache=yes

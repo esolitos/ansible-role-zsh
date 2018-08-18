@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  become: true
   tasks:
     - name: "Create test user"
       user: name=testuser
