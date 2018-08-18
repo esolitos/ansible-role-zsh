@@ -2,7 +2,7 @@
 - hosts: all
   vars:
     __users__:
-      root:
+      "{{ ansible_user }}":
         zsh_default_shell: yes
         zsh_prompt_install: yes
   roles:
