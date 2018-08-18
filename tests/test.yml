@@ -1,5 +1,9 @@
 ---
 - hosts: all
-
+  vars:
+    __users__:
+      root:
+        zsh_default_shell: yes
+        zsh_prompt_install: yes
   roles:
     - role_under_test
