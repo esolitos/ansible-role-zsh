@@ -8,8 +8,8 @@ This role can also configure `~./zshrc` file, upload functions files or download
 ## Requirements
 
 - RedHat family
-- Debian family
-- Darwin (OSX) with [homebrew](http://brew.sh/) package manager installed.
+- Debian + Ubuntu family
+- Darwin (OSX) with [homebrew](http://brew.sh/) package manager installed. (test are missing)
 
 ## Role Variables
 
@@ -72,10 +72,6 @@ The following playbook will ensure zsh is present for root user and will setup `
   roles:
     - zsh
 ```
-
-## Run Tests
-
-Require [serverspec](http://serverspec.org/), check [.travis.yml](.travis.yml) for details.
 
 ## Licence
 

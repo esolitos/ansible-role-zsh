@@ -1,31 +1,21 @@
 ---
+# Test this transmission-daemon role using travis CI and docker
+# @see https://www.jeffgeerling.com/blog/2018/how-i-test-ansible-configuration-on-7-different-oses-docker
+services: docker
 
-language: python
-python: "2.7"
-
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get remove --purge zsh
-  - sudo apt-get install ruby rubygems
-  - sudo useradd mtester -m -d /home/mtester -s /bin/bash
-  - sudo chgrp ```id -gn``` /home/mtester
-  - sudo chmod g+s /home/mtester
-  - sudo rm -rf /home/mtester/.zfunctions
-  - sudo rm -f /home/mtester/.zshrc
-  - umask 002
-  - gem install serverspec
-
-install:
-  - pip install ansible
-  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
+env:
+  - distro: ubuntu1804
+  - distro: ubuntu1604
+  - distro: debian9
+  - distro: debian8
 
 script:
-  # Check machine pre-test state.
-  - rspec tests/spec/before_test_spec.rb
+  # Download test shim.
+  - wget -O ${PWD}/tests/test-ansible-role.sh https://raw.githubusercontent.com/esolitos/gists/master/shell/test-ansible-role.sh
+  - chmod +x ${PWD}/tests/test-ansible-role.sh
 
-  # Check syntax
-  - ansible-playbook -i tests/inventory ./tests/playbooks/configure.yml --syntax-check --list-tasks
+  # Run tests.
+  - ${PWD}/tests/test-ansible-role.sh -d $distro --skip-idempotent --extra-test "${PWD}/tests/test-transmission-connection.sh"
 
-  # Check role
-  - ansible-playbook -i ./tests/inventory tests/playbooks/configure.yml --connection=local --sudo
-  - rspec tests/spec/configure_spec.rb
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
