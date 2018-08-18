@@ -1,9 +1,14 @@
 ---
 - hosts: all
-  vars:
-    __users__:
-      "{{ ansible_user }}":
-        zsh_default_shell: yes
-        zsh_prompt_install: yes
-  roles:
-    - role_under_test
+  tasks:
+    - name: "Create test user"
+      user: name=testuser
+
+    - name: "Run test role"
+      import_role:
+        name: role_under_test
+      vars:
+        __users__:
+          testuser:
+            zsh_default_shell: yes
+            zsh_prompt_install: yes
