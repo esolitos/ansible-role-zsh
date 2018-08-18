@@ -15,7 +15,7 @@ script:
   - chmod +x ${PWD}/tests/test-ansible-role.sh
 
   # Run tests.
-  - ${PWD}/tests/test-ansible-role.sh -d $distro"
+  - ${PWD}/tests/test-ansible-role.sh -d $distro
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
