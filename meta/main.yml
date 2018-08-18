@@ -2,10 +2,11 @@
 dependencies: []
 
 galaxy_info:
+  role_name: zsh
   author: Esolitos (Forked from Maxime Loliée)
   description: Install and set up ZSH an interactive and fast shell.
   license: "license (MIT)"
-  min_ansible_version: 1.8
+  min_ansible_version: 2.0
   platforms:
   - name: EL
     versions:
@@ -17,8 +18,8 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - all
-  - name: Darwin
+  - name: macOS
     versions:
     - all
-  categories:
+  galaxy_tags:
     - system
