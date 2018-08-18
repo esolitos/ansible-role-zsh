@@ -18,7 +18,7 @@
 
 - name: Set as default shell
   user: name={{ item.key }} shell=/bin/zsh
-  with_dict: __users__ | default({})
+  with_dict: "{{ __users__ | default({}) }}"
   when: >
     (ansible_os_family == 'RedHat' or ansible_os_family == 'Debian') and
     (item.value.has_key('zsh_default_shell') and item.value.zsh_default_shell)
@@ -29,7 +29,7 @@
     src=zshrc.j2
     owner={{ item.key }}
     dest=~{{ item.key }}/.zshrc
-  with_dict: __users__ | default({})
+  with_dict: "{{ __users__ | default({}) }}"
 
 - name: Check for .zfunctions directory.
   file:
@@ -37,7 +37,7 @@
     mode=0755
     owner={{ item.key }}
     dest=~{{ item.key }}/.zfunctions
-  with_dict: __users__ | default({})
+  with_dict: "{{ __users__ | default({}) }}"
 
 - name: Upload zfunctions files
   copy:
@@ -47,7 +47,7 @@
       directory_mode=yes
       force=yes
       mode=0755
-  with_dict: __users__ | default({})
+  with_dict: "{{ __users__ | default({}) }}"
   when: >
     item.value.has_key('zsh_zfunctions_directory')
 
@@ -58,7 +58,7 @@
     url={{ item.value.zsh_prompt_download_url | default(zsh_default_prompt_download_url) }}
     checksum={{ item.value.zsh_prompt_download_md5 | default(zsh_default_prompt_download_md5) }}
     dest=~{{ item.key }}/.zfunctions/prompt_{{ item.value.zsh_prompt_name | default(zsh_default_prompt_name) }}_setup
-  with_dict: __users__ | default({})
+  with_dict: "{{ __users__ | default({}) }}"
   when: item.value.has_key('zsh_prompt_install') and item.value.zsh_prompt_install
 
 - name: Download zsh prompt additional file.
@@ -68,7 +68,7 @@
     url={{ item.value.zsh_prompt_additional_url }}
     checksum={{ item.value.zsh_prompt_additional_md5 | default(omit) }}
     dest=~{{ item.key }}/.zfunctions/{{ zsh_prompt_additional_url | basename | replace('.zsh', '') }}
-  with_dict: __users__ | default({})
+  with_dict: "{{ __users__ | default({}) }}"
   when: >
     item.value.has_key('zsh_prompt_install') and item.value.zsh_prompt_install and
     item.value.has_key('zsh_prompt_additional_url') and item.value.zsh_prompt_additional_url
@@ -80,7 +80,7 @@
     url={{ zsh_default_prompt_additional_url }}
     checksum={{ zsh_default_prompt_additional_md5 }}
     dest=~{{ item.key }}/.zfunctions/{{ zsh_default_prompt_additional_url | basename | replace('.zsh', '') }}
-  with_dict: __users__ | default({})
+  with_dict: "{{ __users__ | default({}) }}"
   when: >
       item.value.has_key('zsh_prompt_install') and item.value.zsh_prompt_install and not
       item.value.has_key('zsh_prompt_name')
