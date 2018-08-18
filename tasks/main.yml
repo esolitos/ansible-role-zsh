@@ -68,7 +68,7 @@
     mode: 0744
     owner: "{{ item.key }}"
     url: "{{ item.value.zsh_prompt_additional_url }}"
-    checksum: "md5:{{ item.value.zsh_prompt_additional_md5 | default(omit) }}"
+    checksum: "{{ item.value.zsh_prompt_additional_md5 | default(omit) }}"
     dest: "~{{ item.key }}/.zfunctions/{{ zsh_prompt_additional_url | basename | replace('.zsh', '') }}"
   with_dict: "{{ __users__ | default({}) }}"
   when: >
@@ -80,7 +80,7 @@
     mode: 0744
     owner: "{{ item.key }}"
     url: "{{ zsh_default_prompt_additional_url }}"
-    checksum: "md5:{{ zsh_default_prompt_additional_md5 }}"
+    checksum: "{{ zsh_default_prompt_additional_md5 | default(omit) }}"
     dest: "~{{ item.key }}/.zfunctions/{{ zsh_default_prompt_additional_url | basename | replace('.zsh', '') }}"
   with_dict: "{{ __users__ | default({}) }}"
   when: >
