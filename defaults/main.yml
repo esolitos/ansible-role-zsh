@@ -2,6 +2,6 @@
 
 zsh_default_prompt_name: pure
 zsh_default_prompt_download_url: https://raw.githubusercontent.com/sindresorhus/pure/master/pure.zsh
-zsh_default_prompt_download_md5: "md5:1732e778113dfbef50a0d0625e69a191"
+zsh_default_prompt_download_md5: "md5:15a8a210ec7fe287b759c5d58d957ec5"
 zsh_default_prompt_additional_url: https://raw.githubusercontent.com/sindresorhus/pure/master/async.zsh
-zsh_default_prompt_additional_md5: "md5:d38ea1a8f9cb11495e90788898f20c6a"
+zsh_default_prompt_additional_md5: "md5:109f4e284eff3acb95721c79a61ecbea"
