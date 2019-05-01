@@ -1,10 +1,13 @@
 ---
 
 - name: Check for homebrew.
-  command: stat /usr/local/bin/brew
+  stat:
+    path: /usr/local/bin/brew
   register: stat_homebrew
   ignore_errors: True
 
 - name: Install package.
-  homebrew: name=git state=present
-  when: stat_homebrew.rc == 0
+  homebrew:
+    name: git
+    state: present
+  when: stat_homebrew.stat.executable == True
