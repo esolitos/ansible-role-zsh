@@ -61,9 +61,9 @@ The following playbook will ensure zsh is present for root user and will setup `
         zsh_prompt_install: Yes
         zsh_prompt_name: pure-time
         zsh_prompt_download_url: https://raw.githubusercontent.com/dailyherold/pure-time/master/pure.zsh
-        zsh_prompt_download_md5: /*TODO*/
+        zsh_prompt_download_md5: 968a6b6237dbce6c42fe173beb33275a
         zsh_prompt_additional_url: https://raw.githubusercontent.com/dailyherold/pure-time/master/async.zsh
-        zsh_prompt_additional_md5: /*TODO*/
+        zsh_prompt_additional_md5: d5c77c6029c4594ac249ce6e44914a84
         zfunctions_directory: ./files/zfunctions
         zshrc_content: |
           alias ls='ls -lah'
