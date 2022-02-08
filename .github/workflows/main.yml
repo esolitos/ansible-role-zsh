@@ -1,0 +1,30 @@
+name: Ansible Lint
+
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: actions/checkout@v2
+      -
+        name: ansible-lint
+        uses: ansible/ansible-lint-action@v4.1.0.post0
+
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      ansible-galaxy-key: ${{ secrets.ANSIBLE_GALAXY_KEY }}
+    steps:
+      -
+        uses: actions/checkout@v2
+      -
+        name: Publish Ansible role to Galaxy
+        uses: robertdebock/galaxy-action@1.1.1
+        with:
+          galaxy_api_key: ${{ env.ansible-galaxy-key }}
