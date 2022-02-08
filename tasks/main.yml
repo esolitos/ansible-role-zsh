@@ -1,17 +1,17 @@
 ---
 # Install and zsh package, set up zshrc.
 
-- include: RedHat.yml
+- include_tasks: RedHat.yml
   when: ansible_os_family == 'RedHat'
   tags:
     - packages
 
-- include: Debian.yml
+- include_tasks: Debian.yml
   when: ansible_os_family == 'Debian'
   tags:
     - packages
 
-- include: Darwin.yml
+- include_tasks: Darwin.yml
   when: ansible_os_family == 'Darwin'
 
 # Setup zshrc/prompt
