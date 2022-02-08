@@ -1,4 +1,4 @@
-name: Ansible Lint
+name: Ansible CI
 
 on:
   push:
@@ -7,16 +7,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro: [ubuntu1804, ubuntu2004, ubuntu2104, debian9, debian10]
     steps:
       -
-        uses: actions/checkout@v2
+        name: Download test shim.
+        run: | 
+          wget -O ${PWD}/tests/test-ansible-role.sh https://raw.githubusercontent.com/esolitos/gists/master/shell/test-ansible-role.sh
+          chmod +x ${PWD}/tests/test-ansible-role.sh
       -
-        name: ansible-lint
-        uses: ansible/ansible-lint-action@v4.1.0.post0
+        name: Run test
+        run: ${PWD}/tests/test-ansible-role.sh -d  ${{ matrix.distro }}
 
   publish:
+    needs:
+      - test
     runs-on: ubuntu-latest
     env:
       ansible-galaxy-key: ${{ secrets.ANSIBLE_GALAXY_KEY }}
