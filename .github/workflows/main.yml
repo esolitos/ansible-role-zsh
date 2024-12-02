@@ -37,6 +37,9 @@ jobs:
     needs:
       - test
     runs-on: ubuntu-latest
+    environment:
+      name: Galaxy
+      url: https://galaxy.ansible.com/ui/standalone/roles/esolitos/zsh/
     env:
       ansible-galaxy-key: ${{ secrets.ANSIBLE_GALAXY_KEY }}
     steps:
