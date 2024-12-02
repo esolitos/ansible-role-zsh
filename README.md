@@ -1,8 +1,8 @@
 # Ansible Role: ZSH
 
-[![Build Status](https://travis-ci.org/esolitos/ansible-role-zsh.svg?branch=master)](https://travis-ci.org/esolitos/ansible-role-zsh)
+[![Ansible CI](https://github.com/esolitos/ansible-role-zsh/actions/workflows/main.yml/badge.svg?branch=master&event=push)](https://github.com/esolitos/ansible-role-zsh/actions/workflows/main.yml)
 
-Install and set up [ZSH](http://www.zsh.org/).  
+Install and set up [ZSH](http://www.zsh.org/).
 This role can also configure `~./zshrc` file, upload functions files or download and set up a nice standalone `prompt`.
 
 ## Requirements
@@ -22,7 +22,8 @@ __users__:
   [username]:
     [option]: [value]
 ```
-**Options**
+
+### Options
 
 | Option                    | Type     | Comments                                                      |
 |---------------------------|----------|---------------------------------------------------------------|
@@ -33,7 +34,6 @@ __users__:
 | zsh_prompt_additional_url | string   | Prompt additional download url to put in `.zfunctions`.       |
 | zsh_zfunctions_directory  | string   | Directory of files to upload on remote `.zfunctions`.         |
 | zsh_zshrc_content         | text     | Lines to append in `~/.zshrc`.                                |
-
 
 ### Defaults
 
