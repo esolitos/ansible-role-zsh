@@ -39,6 +39,6 @@ jobs:
         uses: actions/checkout@v4
       -
         name: Publish Ansible role to Galaxy
-        uses: robertdebock/galaxy-action@1.1.1
+        uses: robertdebock/galaxy-action@1.2.1
         with:
           galaxy_api_key: ${{ env.ansible-galaxy-key }}
